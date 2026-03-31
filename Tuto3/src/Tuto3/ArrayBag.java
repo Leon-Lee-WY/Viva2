@@ -5,16 +5,15 @@ public class ArrayBag<T> implements BagInterface<T> {
     private int numberOfEntries;
     private static final int DEFAULT_CAPACITY = 25;
 
-    // Default constructor
     public ArrayBag() {
-        this(DEFAULT_CAPACITY);
+        bag=(T[]) new Object[DEFAULT_CAPACITY];
+        numberOfEntries=0;
     }
 
-    // Constructor with custom capacity
     @SuppressWarnings("unchecked")
     public ArrayBag(int capacity) {
-        bag = (T[]) new Object[capacity];
-        numberOfEntries = 0;
+        bag= (T[]) new Object[capacity];
+        numberOfEntries=0;
     }
 
     @Override
@@ -24,12 +23,12 @@ public class ArrayBag<T> implements BagInterface<T> {
 
     @Override
     public boolean isEmpty() {
-        return numberOfEntries == 0;
+        return numberOfEntries==0;
     }
 
     @Override
     public boolean isFull() {
-        return numberOfEntries >= bag.length;
+        return numberOfEntries>=bag.length;
     }
 
     @Override
@@ -57,7 +56,6 @@ public class ArrayBag<T> implements BagInterface<T> {
     public boolean remove(T anEntry) {
         int index = getIndexOf(anEntry);
         if (index > -1) {
-            // Logic: Move the last element into the hole created by removal
             bag[index] = bag[numberOfEntries - 1];
             bag[numberOfEntries - 1] = null;
             numberOfEntries--;
@@ -90,7 +88,6 @@ public class ArrayBag<T> implements BagInterface<T> {
     }
 
     @Override
-    @SuppressWarnings("unchecked")
     public T[] toArray() {
         T[] result = (T[]) new Object[numberOfEntries];
         for (int i = 0; i < numberOfEntries; i++) {
@@ -107,6 +104,7 @@ public class ArrayBag<T> implements BagInterface<T> {
         }
         return -1;
     }
+    
     @Override
     public BagInterface<T> union(BagInterface<T> otherBag) {
         int combinedSize = this.getCurrentSize() + otherBag.getCurrentSize();
@@ -123,6 +121,7 @@ public class ArrayBag<T> implements BagInterface<T> {
         }
         return everything;
     }
+    
     @Override
     public BagInterface<T> intersection(BagInterface<T> otherBag) {
         int minCapacity = Math.min(this.getCurrentSize(), otherBag.getCurrentSize());
@@ -141,6 +140,7 @@ public class ArrayBag<T> implements BagInterface<T> {
         }
         return resultBag;
     }
+    
     @Override
     public BagInterface<T> difference(BagInterface<T> otherBag) {
         BagInterface<T> resultBag = new ArrayBag<>(this.getCurrentSize());
