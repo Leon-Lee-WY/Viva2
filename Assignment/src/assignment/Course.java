@@ -21,7 +21,7 @@ public interface Course {
     public String getInstructorName();
     
     /**
-     * @return all relevant information about the course
+     * @prints all relevant information about the course
      */
     public void printCourseDetails();
 }
