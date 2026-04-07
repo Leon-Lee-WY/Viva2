@@ -4,7 +4,7 @@ public class Main {
         //Create 2 lecture course and 2 lab course objects
         LectureCourse a=new LectureCourse("WIA1003", "Computer System Architecture", "Dr. Tey Kok Soon", 2);
         LectureCourse b=new LectureCourse("WIA1005", "Network Technology Foundation", "Dr. Faiz Zaki", 2);
-        LabCourse x=new LabCourse("WIA1002", "Data Structure", "Dr. Zainab Malik", 3, 1);
+        LabCourse x=new LabCourse("WIA1002", "Data Structure", "Dr. Zainab", 3, 1);
         LabCourse y=new LabCourse("WIA1006", "Machine Learning", "Dr. Shapla", 1, 2);
         
         //course manager instance
